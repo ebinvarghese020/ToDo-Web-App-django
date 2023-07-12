@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card mx-auto" style="width: 25rem;">
+        <div class="card-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-5 ">
+                        <a href="/"><i class="bi bi-arrow-left"></i></a> 
+                    </div>
+                    <div class="col">
+                        Register
+                    </div>
+                </div>
+                
+            </div>
+           
+        </div>
+        <div class="card-body">
+            <form action="register" method="post">
+                {% csrf_token %}
+
+                <div class="row mb-4">
+                    <div class="col">
+                      <input type="text" class="form-control" name="first_name" placeholder="First name">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" name="last_name" placeholder="Last name">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                      <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="col">
+                      <input type="email" class="form-control" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                      <input type="password" class="form-control" name="password1" placeholder="Password">
+                    </div>
+                    <div class="col">
+                      <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-outline-danger">Submit</button>
+                </div> 
+            </form>   
+        </div>
+    </div>
+
+    
+    <div>
+        {% for message in messages %}
+        <h3> {{message}} </h3>
+        {% endfor %}
+    </div>
+
+    
+{% endblock %}
+
+

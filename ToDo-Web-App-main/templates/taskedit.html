@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card w-50 mx-auto">
+        <div class="card-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-5 ">
+                        <a href="/"><i class="bi bi-arrow-left"></i></a> 
+                    </div>
+                    <div class="col">
+                        Edit Task
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <form action="/edittask/{{ task.id }}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input class="form-control" value='{{ task.title }}' name="title">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" rows="3" name='desc'>{{ task.desc }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Deadline</label>
+                    <input type="datetime-local" name="deadline" class="form-control" value='{{ deadline }}'/>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-outline-danger">Submit</button>
+                </div>
+            </form>   
+        </div>
+    </div>
+    
+{% endblock %}
+
